@@ -4,7 +4,7 @@
 # Install dnf required packages
 #########################################################################################################
 sudo dnf install -y epel-release 
-sudo dnf install -y neovim git zsh util-linux-user
+sudo dnf install -y neovim git zsh util-linux-user tar
 sudo dnf update -y
 
 #########################################################################################################
