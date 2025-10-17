@@ -4,8 +4,15 @@
 # Install dnf required packages
 ##########################################################################################################################
 sudo dnf install -y epel-release 
-sudo dnf install -y neovim git zsh util-linux-user tar
+sudo dnf install -y git zsh util-linux-user tar ripgrep
 sudo dnf update -y
+
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
+chmod +x nvim-linux-x86_64.appimage
+./nvim-linux-x86_64.appimage --appimage-extract
+mv squashfs-root/usr/bin/nvim /bin/nvim
+rm -rf nvim-linux-x86_64.appimage squashfs-root
+
 
 ##########################################################################################################################
 # Install ohmyzsh
@@ -24,7 +31,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 ##########################################################################################################################
-# Configure zsh
+# Configure zsh and nvim
 ##########################################################################################################################
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
 sed -i 's/# COMPLETION_WAITING_DOTS="true"/COMPLETION_WAITING_DOTS="true"/g' ~/.zshrc
@@ -35,4 +42,7 @@ echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 echo 'alias vi=nvim' >> ~/.zshrc
 echo 'alias vim=nvim' >> ~/.zshrc
 
+mkdir -p $HOME/.config/nvim
+cp -r nvim $HOME/.config/nvim
 
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
