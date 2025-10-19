@@ -43,6 +43,6 @@ echo 'alias vi=nvim' >> ~/.zshrc
 echo 'alias vim=nvim' >> ~/.zshrc
 
 mkdir -p $HOME/.config/nvim
-cp -r nvim $HOME/.config/nvim
+cp -r nvim $HOME/.config/
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
