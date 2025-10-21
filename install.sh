@@ -41,10 +41,12 @@ sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting
 
 cp .p10k.zsh ~
 echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+echo 'alias vi=nvim' >> ~/.zshrc
 echo 'alias vim=nvim' >> ~/.zshrc
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+mkdir -p $HOME/.config/nvim/
 cp -r nvim $HOME/.config/
 
 
