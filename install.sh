@@ -4,7 +4,7 @@
 # Install dnf required packages
 ##########################################################################################################################
 sudo dnf install -y epel-release 
-sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make
+sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip 
 sudo dnf update -y
 
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
@@ -44,9 +44,28 @@ echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 echo 'alias vi=nvim' >> ~/.zshrc
 echo 'alias vim=nvim' >> ~/.zshrc
 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
-
+git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git $HOME/.local/share/nvim/lazy/lazy.nvim
 mkdir -p $HOME/.config/nvim/
 cp -r nvim $HOME/.config/
 
+##########################################################################################################################
+# Install gopls
+##########################################################################################################################
+curl -O --output-dir /opt/ https://dl.google.com/go/go1.25.3.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local/ -xzf /opt/go1.25.3.linux-amd64.tar.gz
+echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.zshrc
+rm -f /opt/go1.25.3.linux-amd64.tar.gz 
+go version
 
+##########################################################################################################################
+# Install npm
+##########################################################################################################################
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install 24
+
+##########################################################################################################################
+# Install npm
+##########################################################################################################################
+
+curl -O --output-dir /opt https://github.com/lemonade-command/lemonade/releases/download/v1.1.1/lemonade_linux_amd64.tar.gz
