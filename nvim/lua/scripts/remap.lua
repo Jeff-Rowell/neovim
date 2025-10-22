@@ -19,7 +19,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
---  keeps the cursor position when reformatting long text/comments 
+--  keeps the cursor position when reformatting long text/comments
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
 -- for the vim practice games
@@ -100,16 +100,12 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- animations to show off
+vim.keymap.set("n", "<leader>car", function()
+    require("cellular-automaton").start_animation("make_it_rain")
+end)
 
-
-
-
-
-
-
-
-
-
-
-
+vim.keymap.set("n", "<leader>cag", function()
+    require("cellular-automaton").start_animation("game_of_life")
+end)
 
