@@ -35,7 +35,6 @@ end)
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- yanks to the system clipboard instead of a vim register
--- TODO: install osc52 to make this work over ssh
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 

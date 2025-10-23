@@ -3,7 +3,7 @@
 ##########################################################################################################################
 # Install dnf required packages
 ##########################################################################################################################
-sudo dnf install -y epel-release 
+sudo dnf install -y epel-release
 sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip readline-devel
 sudo dnf update -y
 
@@ -52,7 +52,7 @@ curl -O --output-dir /opt/ https://www.lua.org/ftp/lua-5.1.5.tar.gz
 sudo tar xzvf -C /opt/ /opt/lua-5.1.5.tar.gz
 cd /opt/lua-5.1.5/
 sudo make linux
-sudo make install 
+sudo make install
 
 ##########################################################################################################################
 # Install gopls
@@ -60,7 +60,7 @@ sudo make install
 curl -O --output-dir /opt/ https://dl.google.com/go/go1.25.3.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local/ -xzf /opt/go1.25.3.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin:/usr/local/bin' >> $HOME/.zshrc
-rm -f /opt/go1.25.3.linux-amd64.tar.gz 
+rm -f /opt/go1.25.3.linux-amd64.tar.gz
 go version
 
 ##########################################################################################################################
@@ -70,7 +70,3 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 \. "$HOME/.nvm/nvm.sh"
 nvm install 24
 
-##########################################################################################################################
-# Install npm
-##########################################################################################################################
-curl -O --output-dir /opt https://github.com/lemonade-command/lemonade/releases/download/v1.1.1/lemonade_linux_amd64.tar.gz
