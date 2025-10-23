@@ -4,7 +4,7 @@
 # Install dnf required packages
 ##########################################################################################################################
 sudo dnf install -y epel-release
-sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip readline-devel
+sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip readline-devel wget tmux
 sudo dnf update -y
 
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
