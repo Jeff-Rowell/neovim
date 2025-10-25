@@ -22,15 +22,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 --  keeps the cursor position when reformatting long text/comments
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
--- for the vim practice games
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
-
 -- this allows replacing text with what's in the register, without replacing what's in the register
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
