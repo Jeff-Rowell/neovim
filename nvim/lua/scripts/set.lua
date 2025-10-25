@@ -32,7 +32,7 @@ vim.opt.updatetime = 50
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "lua",
     callback = function()
-        vim.opt_local.smartindent = false
+        vim.opt_local.smartindent = true
         vim.opt_local.autoindent = true
     end,
 })
