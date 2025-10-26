@@ -99,3 +99,6 @@ vim.keymap.set("n", "<leader>cag", function()
     require("cellular-automaton").start_animation("game_of_life")
 end)
 
+-- switch left and right between split windows
+vim.api.nvim_set_keymap("n", "<leader>l", "<C-w>l", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>h", "<C-w>h", { noremap = true, silent = true })
