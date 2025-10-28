@@ -60,6 +60,7 @@ sudo make install
 curl -O --output-dir /opt/ https://dl.google.com/go/go1.25.3.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local/ -xzf /opt/go1.25.3.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin:/usr/local/bin' >> $HOME/.zshrc
+echo "bindkey '^U' backward-kill-line" >> $HOME/.zshrc
 rm -f /opt/go1.25.3.linux-amd64.tar.gz
 go version
 
