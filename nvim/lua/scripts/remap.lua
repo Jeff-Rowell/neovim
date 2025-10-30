@@ -30,10 +30,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- deletes text without copying it to any register
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
-
--- ctrl-c instead of esc
-vim.keymap.set("i", "<C-c>", "<ESC>")
+vim.keymap.set({ "n", "v" }, "<leader>D", "\"_d")
 
 -- ignores accidental Q presses to avoid going into Ex mode
 vim.keymap.set("n", "Q", "<nop>")
