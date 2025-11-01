@@ -30,22 +30,23 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "lua",
-    callback = function()
-        vim.opt_local.smartindent = true
-        vim.opt_local.autoindent = true
-    end,
+	pattern = "lua",
+	callback = function()
+		vim.opt_local.smartindent = true
+		vim.opt_local.autoindent = true
+	end,
 })
 
 vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-  },
-  paste = {
-    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-  },
+	name = "OSC 52",
+	copy = {
+		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+	},
+	paste = {
+		["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+		["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+	},
 }
 
+vim.o.termguicolors = true

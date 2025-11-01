@@ -39,16 +39,16 @@ autocmd({ "BufWritePre" }, {
 	end,
 })
 
-autocmd("BufEnter", {
-	group = scriptsGroup,
-	callback = function()
-		if vim.bo.filetype == "python" then
-			pcall(vim.cmd.colorscheme, "rose-pine-moon")
-		else
-			pcall(vim.cmd.colorscheme, "tokyonight-night")
-		end
-	end,
-})
+--autocmd("BufEnter", {
+--	group = scriptsGroup,
+--	callback = function()
+--		if vim.bo.filetype == "python" then
+--			pcall(vim.cmd.colorscheme, "rose-pine-moon")
+--		else
+--			pcall(vim.cmd.colorscheme, "tokyonight-night")
+--		end
+--	end,
+--})
 
 autocmd("LspAttach", {
 	group = scriptsGroup,
