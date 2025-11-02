@@ -50,3 +50,9 @@ vim.g.clipboard = {
 }
 
 vim.o.termguicolors = true
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+	callback = function()
+		vim.cmd("normal! zz")
+	end,
+})
