@@ -22,6 +22,12 @@ function ColorMyPencils(color)
 	vim.api.nvim_set_hl(0, "PmenuBorder", { bg = "#0d0d0d" })
 	vim.api.nvim_set_hl(0, "CmpNormal", { bg = "#0d0d0d" })
 	vim.api.nvim_set_hl(0, "CmpBorder", { bg = "#0d0d0d" })
+
+	-- fix background for vim diagnostics
+	vim.api.nvim_set_hl(0, "diagnosticVirtualTextError", { bg = "#0d0d0d", fg = "#eb6f92" })
+	vim.api.nvim_set_hl(0, "diagnosticVirtualTextWarn", { bg = "#0d0d0d", fg = "#f6c177" })
+	vim.api.nvim_set_hl(0, "diagnosticVirtualTextInfo", { bg = "#0d0d0d", fg = "#9ccfd8" })
+	vim.api.nvim_set_hl(0, "diagnosticVirtualTextHint", { bg = "#0d0d0d", fg = "#c4a7e7" })
 end
 
 return {
