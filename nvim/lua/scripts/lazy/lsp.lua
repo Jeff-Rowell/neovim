@@ -34,7 +34,7 @@ return {
 				"lua_ls",
 				"gopls",
 				"tailwindcss",
-				"pylsp",
+				"basedpyright",
 			},
 			handlers = {
 				function(server_name)
@@ -49,9 +49,6 @@ return {
 						capabilities = capabilities,
 						settings = {
 							Lua = {
-								diagnostics = {
-									globals = { "vim" }, -- ignore neovim global vim
-								},
 								format = {
 									enable = true,
 									defaultConfig = {
