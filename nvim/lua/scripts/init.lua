@@ -55,7 +55,8 @@ autocmd("LspAttach", {
 	callback = function(e)
 		local opts = { buffer = e.buf }
 		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
+			-- vim.lsp.buf.definition()
+			require("telescope.builtin").lsp_definitions()
 		end, opts)
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
