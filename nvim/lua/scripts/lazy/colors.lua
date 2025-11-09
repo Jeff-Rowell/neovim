@@ -28,6 +28,15 @@ function ColorMyPencils(color)
 	vim.api.nvim_set_hl(0, "diagnosticVirtualTextWarn", { bg = "#0d0d0d", fg = "#f6c177" })
 	vim.api.nvim_set_hl(0, "diagnosticVirtualTextInfo", { bg = "#0d0d0d", fg = "#9ccfd8" })
 	vim.api.nvim_set_hl(0, "diagnosticVirtualTextHint", { bg = "#0d0d0d", fg = "#c4a7e7" })
+
+	-- treesitter
+	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#1a1a1a" })
+
+	-- status lines
+	vim.api.nvim_set_hl(0, "StatusLine", { bg = "#1a1a1a" })
+	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#1a1a1a" })
 end
 
 return {
