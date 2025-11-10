@@ -18,7 +18,7 @@ function ColorMyPencils(color)
 
 	-- fix lsp and cmp
 	vim.api.nvim_set_hl(0, "Pmenu", { bg = "#0d0d0d" })
-	vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#2a2a2a" })
+	vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#1a1a1a" })
 	vim.api.nvim_set_hl(0, "PmenuBorder", { bg = "#0d0d0d" })
 	vim.api.nvim_set_hl(0, "CmpNormal", { bg = "#0d0d0d" })
 	vim.api.nvim_set_hl(0, "CmpBorder", { bg = "#0d0d0d" })
@@ -30,13 +30,25 @@ function ColorMyPencils(color)
 	vim.api.nvim_set_hl(0, "diagnosticVirtualTextHint", { bg = "#0d0d0d", fg = "#c4a7e7" })
 
 	-- treesitter
-	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#0d0d0d" })
-	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#1a1a1a" })
+	vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#1a1a1a" })
 	vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#1a1a1a" })
 
 	-- status lines
 	vim.api.nvim_set_hl(0, "StatusLine", { bg = "#1a1a1a" })
 	vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#1a1a1a" })
+
+	-- visual
+	vim.api.nvim_set_hl(0, "Visual", { bg = "#222222" })
+
+	-- trouble
+	vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "TroubleNormalNC", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "TroubleCursor", { bg = "#222222" })
+	vim.api.nvim_set_hl(0, "TroubleCursorPreview", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "CursorLine", { bg = "#222222" })
+	vim.api.nvim_set_hl(0, "TroubleLine", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "TroublePos", { bg = "#0d0d0d" })
 end
 
 return {
