@@ -9,7 +9,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.api.nvim_set_keymap("n", "<leader>tf", "<Plug>PlenaryTestFile", { noremap = false, silent = false })
 
 -- allows joining multiple lines to the same line without moving the cursor
-vim.keymap.set("n", "J",  "mzJ`z")
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- centered scrolling to keep the cursor centered
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -30,16 +30,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- deletes text without copying it to any register
-vim.keymap.set({ "n", "v" }, "<leader>D", "\"_d")
+vim.keymap.set({ "n", "v" }, "<leader>D", '"_d')
 
 -- ignores accidental Q presses to avoid going into Ex mode
 vim.keymap.set("n", "Q", "<nop>")
-
--- fuzzy find a different project on the server and opens a new window via tmux for that project
--- TODO: install tmux and the tmux-sessionizer script
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>")
-vim.keymap.set("n", "<M-H>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
 
 -- next and previous hotkeys for quickfix/location lists
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -55,45 +49,29 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- golang error handling snippets
 -- if err, return it
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
 -- assert there is no error
-vim.keymap.set(
-    "n",
-    "<leader>ea",
-    "oassert.NoError(err, \"\")<Esc>F\";a"
-)
+vim.keymap.set("n", "<leader>ea", 'oassert.NoError(err, "")<Esc>F";a')
 
 -- if there is an error, log fatal
-vim.keymap.set(
-    "n",
-    "<leader>ef",
-    "oif err != nil {<CR>}<Esc>Olog.Fatalf(\"error: %s\\n\", err.Error())<Esc>jj"
-)
+vim.keymap.set("n", "<leader>ef", 'oif err != nil {<CR>}<Esc>Olog.Fatalf("error: %s\\n", err.Error())<Esc>jj')
 
 -- if there is an error, log it to custom logger with cursor properly placed
-vim.keymap.set(
-    "n",
-    "<leader>el",
-    "oif err != nil {<CR>}<Esc>O.Error(\"error\", \"error\", err)<Esc>F.;i"
-)
+vim.keymap.set("n", "<leader>el", 'oif err != nil {<CR>}<Esc>O.Error("error", "error", err)<Esc>F.;i')
 
 -- reloads and sources the current file
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 -- animations to show off
 vim.keymap.set("n", "<leader>car", function()
-    require("cellular-automaton").start_animation("make_it_rain")
+	require("cellular-automaton").start_animation("make_it_rain")
 end)
 
 vim.keymap.set("n", "<leader>cag", function()
-    require("cellular-automaton").start_animation("game_of_life")
+	require("cellular-automaton").start_animation("game_of_life")
 end)
 
 -- switch left and right between split windows

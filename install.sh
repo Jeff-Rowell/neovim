@@ -4,7 +4,7 @@
 # Install dnf required packages
 ##########################################################################################################################
 sudo dnf install -y epel-release
-sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip readline-devel wget tmux
+sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip readline-devel wget tmux fzf
 sudo dnf update -y
 
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
@@ -70,4 +70,10 @@ go version
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 \. "$HOME/.nvm/nvm.sh"
 nvm install 24
+
+##########################################################################################################################
+# Install rust for htmx lsp
+##########################################################################################################################
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+echo '. "$HOME/.cargo/env"' >> $HOME/.zshrc
 

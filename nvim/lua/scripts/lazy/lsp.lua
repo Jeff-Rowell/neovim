@@ -35,6 +35,7 @@ return {
 				"gopls",
 				"tailwindcss",
 				"basedpyright",
+				"htmx",
 			},
 			handlers = {
 				function(server_name)
