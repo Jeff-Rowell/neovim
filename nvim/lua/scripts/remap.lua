@@ -23,7 +23,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
 -- this allows replacing text with what's in the register, without replacing what's in the register
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- yanks to the system clipboard instead of a vim register
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])

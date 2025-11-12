@@ -12,11 +12,23 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		"windwp/nvim-ts-autotag",
 	},
 
 	config = function()
 		require("conform").setup({
-			formatters_by_ft = {},
+			formatters_by_ft = {
+				html = { "prettier" },
+			},
+		})
+
+		require("nvim-ts-autotag").setup({
+			opts = {
+				enable_close = true,
+				enable_rename = true,
+				enable_close_on_slash = true,
+			},
+			filetypes = { "html", "xml", "gohtml", "templ" },
 		})
 
 		local cmp = require("cmp")
@@ -36,6 +48,8 @@ return {
 				"tailwindcss",
 				"basedpyright",
 				"htmx",
+				"templ",
+				"html",
 			},
 			handlers = {
 				function(server_name)
@@ -44,6 +58,22 @@ return {
 					})
 				end,
 
+				["htmx"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.htmx.setup({
+						filetypes = { "html", "gohtml", "templ", "go" },
+					})
+				end,
+				["html"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.html.setup({
+						settings = {
+							format = {
+								enable = true,
+							},
+						},
+					})
+				end,
 				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup({
