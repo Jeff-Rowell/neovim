@@ -4,6 +4,7 @@ return {
 		config = function()
 			require("trouble").setup({
 				use_diagnostic_signs = false,
+				mode = "workspace",
 			})
 
 			vim.keymap.set("n", "<leader>tt", function()

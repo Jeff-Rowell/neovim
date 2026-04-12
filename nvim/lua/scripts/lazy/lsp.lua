@@ -16,20 +16,9 @@ return {
 	},
 
 	config = function()
-		require("conform").setup({
-			formatters_by_ft = {
-				html = { "prettier" },
-			},
-		})
+		local lspconfig = require("lspconfig")
 
-		require("nvim-ts-autotag").setup({
-			opts = {
-				enable_close = true,
-				enable_rename = true,
-				enable_close_on_slash = true,
-			},
-			filetypes = { "html", "xml", "gohtml", "templ" },
-		})
+		require("conform").setup({})
 
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
@@ -49,33 +38,23 @@ return {
 				"basedpyright",
 				"htmx",
 				"templ",
-				"html",
+				"ruff",
+				"pylsp",
+				"rust_analyzer",
 			},
 			handlers = {
 				function(server_name)
-					require("lspconfig")[server_name].setup({
+					lspconfig[server_name].setup({
 						capabilities = capabilities,
 					})
 				end,
 
 				["htmx"] = function()
-					local lspconfig = require("lspconfig")
 					lspconfig.htmx.setup({
 						filetypes = { "html", "gohtml", "templ", "go" },
 					})
 				end,
-				["html"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.html.setup({
-						settings = {
-							format = {
-								enable = true,
-							},
-						},
-					})
-				end,
 				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup({
 						capabilities = capabilities,
 						settings = {
@@ -87,12 +66,72 @@ return {
 										indent_size = "2",
 									},
 								},
+								diagnostics = {
+									workspaceDelay = 0,
+									workspaceEvent = "OnSave",
+								},
+							},
+						},
+					})
+				end,
+				["gopls"] = function()
+					lspconfig.gopls.setup({
+						capabilities = capabilities,
+						settings = {
+							gopls = {
+								diagnosticsMode = "workspace",
+								expandWorkspaceToModule = true,
+								analyses = {
+									unusedparams = true,
+									shadow = true,
+								},
+								staticcheck = true,
+								diagnosticsDelay = "0s",
+							},
+						},
+					})
+				end,
+				["basedpyright"] = function()
+					lspconfig.basedpyright.setup({
+						capabilities = capabilities,
+						settings = {
+							basedpyright = {
+								analysis = {
+									autoSearchPaths = true,
+									diagnosticMode = "openFilesOnly",
+									useLibraryCodeForTypes = true,
+									typeCheckingMode = "basic",
+									autoImportCompletions = true,
+									extraPaths = { "/opt/interview" },
+									diagnosticSeverityOverrides = {
+										reportUnknownMemberType = "none",
+									},
+								},
+							},
+						},
+					})
+				end,
+				["pylsp"] = function()
+					lspconfig.pylsp.setup({
+						capabilities = capabilities,
+						settings = {
+							pylsp = {
+								plugins = {
+									pycodestyle = { enabled = false },
+									mccabe = { enabled = false },
+									pyflakes = { enabled = false },
+									pylint = { enabled = false },
+									rope_autoimport = {
+										enabled = true,
+										memory = true,
+									},
+									jedi_completion = { enabled = true },
+								},
 							},
 						},
 					})
 				end,
 				["tailwindcss"] = function()
-					local lspconfig = require("lspconfig")
 					lspconfig.tailwindcss.setup({
 						capabilities = capabilities,
 						filetypes = {
@@ -106,6 +145,17 @@ return {
 							"vue",
 							"svelte",
 							"heex",
+						},
+					})
+				end,
+				["rust_analyzer"] = function()
+					lspconfig.rust_analyzer.setup({
+						capabilities = capabilities,
+						settings = {
+							["rust-analyzer"] = {
+								cargo = { allFeatures = true },
+								check = { command = "clippy", features = "all" },
+							},
 						},
 					})
 				end,

@@ -77,3 +77,16 @@ end)
 -- switch left and right between split windows
 vim.api.nvim_set_keymap("n", "<leader>l", "<C-w>l", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>h", "<C-w>h", { noremap = true, silent = true })
+
+-- tmux sessionizer
+vim.keymap.set("n", "<M-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
+vim.keymap.set("n", "<M-j>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
+vim.keymap.set("n", "<M-l>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
+vim.keymap.set("n", "<M-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 4<CR>")
+
+-- copilot
+--vim.keymap.set("n", "<leader>cf", ":Copilot disable<CR>", { noremap = true, silent = true })
+--vim.keymap.set("n", "<leader>cn", ":Copilot enable<CR>", { noremap = true, silent = true })
+--vim.keymap.set("n", "<leader>cs", ":Copilot status<CR>", { noremap = true, silent = true })

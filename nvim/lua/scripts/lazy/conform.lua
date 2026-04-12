@@ -31,17 +31,16 @@ return {
 		config = function()
 			require("conform").setup({
 				format_on_save = {
-					timeout_ms = 1000,
-					lsp_format = "never",
+					timeout_ms = 100000,
+					lsp_format = "fallback",
 				},
 				formatters_by_ft = {
 					lua = { "stylua" },
 					go = { "goimports" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
 					python = { "isort", "autopep8" },
 					terraform = { "terraform_fmt" },
 					ansible = { "ansible-lint" },
+					rust = { "rustfmt" },
 				},
 				formatters = {
 					terraform_fmt = {

@@ -22,11 +22,6 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 chsh -s $(which zsh)
 
 ##########################################################################################################################
-# Install powerlevel10k theme
-##########################################################################################################################
-git clone https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/themes/powerlevel10k
-
-##########################################################################################################################
 # Install zsh plugins
 ##########################################################################################################################
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/plugins/zsh-autosuggestions
@@ -35,12 +30,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-
 ##########################################################################################################################
 # Configure zsh and nvim
 ##########################################################################################################################
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
-sed -i 's/# COMPLETION_WAITING_DOTS="true"/COMPLETION_WAITING_DOTS="true"/g' ~/.zshrc
 sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
-
-cp .p10k.zsh ~
-echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+sed -i 's/%c%/%d%/g' $HOME/.oh-my-zsh/themes/robbyrussell.zsh-theme
 echo 'alias vi=nvim' >> ~/.zshrc
 echo 'alias vim=nvim' >> ~/.zshrc
 
@@ -77,3 +68,17 @@ nvm install 24
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 echo '. "$HOME/.cargo/env"' >> $HOME/.zshrc
 
+##########################################################################################################################
+# Install and configure tmux sessionizer
+##########################################################################################################################
+curl -O --output-dir /usr/local/bin https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/refs/heads/master/tmux-sessionizer
+chmod +x /usr/local/bin/tmux-sessionizer
+
+mkdir $HOME/.config/tmux-sessionizer
+cp -r tmux-sessionizer.conf $HOME/.config/tmux-sessionizer
+echo "bindkey -s ^f \"tmux-sessionizer\\\\n\"" >> $HOME/.zshrc
+echo "bindkey -s '\eh' \"tmux-sessionizer -s 0\\\\n\"" >> $HOME/.zshrc
+echo "bindkey -s '\ej' \"tmux-sessionizer -s 1\\\\n\"" >> $HOME/.zshrc
+echo "bindkey -s '\ek' \"tmux-sessionizer -s 2\\\\n\"" >> $HOME/.zshrc
+echo "bindkey -s '\el' \"tmux-sessionizer -s 3\\\\n\"" >> $HOME/.zshrc
+echo "bindkey -s '\ef' \"tmux-sessionizer -s 4\\\\n\"" >> $HOME/.zshrc

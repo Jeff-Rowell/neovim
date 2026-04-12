@@ -3,8 +3,8 @@ function ColorMyPencils(color)
 	vim.cmd.colorscheme(color)
 
 	-- set background
-	vim.api.nvim_set_hl(0, "Normal", { bg = "#0d0d0d" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0d0d0d" })
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 	-- fix background for telescope
 	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#0d0d0d" })
