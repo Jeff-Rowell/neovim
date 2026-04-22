@@ -34,7 +34,7 @@ git clone --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.
 mkdir -p $HOME/.config/nvim/
 cp -r nvim $HOME/.config/
 
-curl -O --output-dir /opt/ https://www.lua.org/ftp/lua-5.1.5.tar.gz
+sudo curl -O --output-dir /opt/ https://www.lua.org/ftp/lua-5.1.5.tar.gz
 sudo tar -xzvf /opt/lua-5.1.5.tar.gz -C /opt/
 cd /opt/lua-5.1.5/
 sudo make linux
@@ -44,7 +44,7 @@ sudo make install
 # Install and configure tmux sessionizer
 ##########################################################################################################################
 sudo curl -O --output-dir /usr/local/bin https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/refs/heads/master/tmux-sessionizer
-chmod +x /usr/local/bin/tmux-sessionizer
+sudo chmod +x /usr/local/bin/tmux-sessionizer
 
 mkdir $HOME/.config/tmux-sessionizer
 cp -r tmux-sessionizer.conf $HOME/.config/tmux-sessionizer
@@ -64,4 +64,4 @@ tic -x dotfiles/xterm-ghostty.terminfo
 ##########################################################################################################################
 cp dotfiles/.tmux.conf $HOME/.tmux.conf
 cp dotfiles/.oh-my-zsh/themes/robbyrussell.zsh-theme $HOME/.oh-my-zsh/themes/robbyrussell.zsh-theme
-cp dotfiles/.zshrc $HOME/.zshrc
+cat dotfiles/.zshrc >> $HOME/.zshrc
