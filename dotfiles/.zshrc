@@ -111,7 +111,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:/usr/local/go/bin:/usr/local/bin
-bindkey -s '\ef' "tmux-sessionizer\n"
+bindkey -s '\es' "tmux-sessionizer\n"
 bindkey -s '\eh' "tmux-sessionizer -s 0\n"
 bindkey -s '\ej' "tmux-sessionizer -s 1\n"
 bindkey -s '\ek' "tmux-sessionizer -s 2\n"

@@ -1,11 +1,13 @@
 #!/bin/bash
+# NOTE: Renamed from install.sh to setup.sh to accommodate coder preferences.
+# For Ubuntu 22.04.5 LTS, use install.sh instead.
 
 ##########################################################################################################################
-# Install apt required packages
+# Install dnf required packages
 ##########################################################################################################################
-sudo apt update
-sudo apt install -y git zsh tar ripgrep gcc g++ make unzip libreadline-dev wget tmux fzf curl
-sudo apt upgrade -y
+sudo dnf install -y epel-release
+sudo dnf install -y git zsh util-linux-user tar ripgrep gcc gcc-c++ make unzip readline-devel wget tmux fzf
+sudo dnf update -y
 
 curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
 chmod +x nvim-linux-x86_64.appimage
@@ -35,15 +37,35 @@ mkdir -p $HOME/.config/nvim/
 cp -r nvim $HOME/.config/
 
 curl -O --output-dir /opt/ https://www.lua.org/ftp/lua-5.1.5.tar.gz
-sudo tar -xzvf /opt/lua-5.1.5.tar.gz -C /opt/
+sudo tar xzvf -C /opt/ /opt/lua-5.1.5.tar.gz
 cd /opt/lua-5.1.5/
 sudo make linux
 sudo make install
 
 ##########################################################################################################################
+# Install gopls
+##########################################################################################################################
+curl -O --output-dir /opt/ https://dl.google.com/go/go1.25.3.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local/ -xzf /opt/go1.25.3.linux-amd64.tar.gz
+rm -f /opt/go1.25.3.linux-amd64.tar.gz
+go version
+
+##########################################################################################################################
+# Install npm
+##########################################################################################################################
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install 24
+
+##########################################################################################################################
+# Install rust for htmx lsp
+##########################################################################################################################
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+##########################################################################################################################
 # Install and configure tmux sessionizer
 ##########################################################################################################################
-sudo curl -O --output-dir /usr/local/bin https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/refs/heads/master/tmux-sessionizer
+curl -O --output-dir /usr/local/bin https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/refs/heads/master/tmux-sessionizer
 chmod +x /usr/local/bin/tmux-sessionizer
 
 mkdir $HOME/.config/tmux-sessionizer
@@ -55,13 +77,10 @@ cp -r tmux-sessionizer.conf $HOME/.config/tmux-sessionizer
 curl -fsSL https://opencode.ai/install | bash
 
 ##########################################################################################################################
-# Install Ghostty terminfo
-##########################################################################################################################
-tic -x dotfiles/xterm-ghostty.terminfo
-
-##########################################################################################################################
 # Deploy dotfiles
 ##########################################################################################################################
 cp dotfiles/.tmux.conf $HOME/.tmux.conf
+mkdir -p $HOME/.config/ghostty
+cp dotfiles/config.ghostty $HOME/.config/ghostty/config
 cp dotfiles/.oh-my-zsh/themes/robbyrussell.zsh-theme $HOME/.oh-my-zsh/themes/robbyrussell.zsh-theme
 cp dotfiles/.zshrc $HOME/.zshrc

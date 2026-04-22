@@ -39,7 +39,6 @@ return {
 				"htmx",
 				"templ",
 				"ruff",
-				"pylsp",
 				"rust_analyzer",
 			},
 			handlers = {
@@ -102,35 +101,26 @@ return {
 									useLibraryCodeForTypes = true,
 									typeCheckingMode = "basic",
 									autoImportCompletions = true,
-									extraPaths = { "/opt/interview" },
+									extraPaths = { "TODO" },
 									diagnosticSeverityOverrides = {
 										reportUnknownMemberType = "none",
+										reportUnknownVariableType = "none",
+										reportUnknownArgumentType = "none",
 									},
 								},
 							},
 						},
 					})
 				end,
-				["pylsp"] = function()
-					lspconfig.pylsp.setup({
+				["ruff"] = function()
+					lspconfig.ruff.setup({
 						capabilities = capabilities,
-						settings = {
-							pylsp = {
-								plugins = {
-									pycodestyle = { enabled = false },
-									mccabe = { enabled = false },
-									pyflakes = { enabled = false },
-									pylint = { enabled = false },
-									rope_autoimport = {
-										enabled = true,
-										memory = true,
-									},
-									jedi_completion = { enabled = true },
-								},
-							},
+						handlers = {
+							["textDocument/publishDiagnostics"] = function() end,
 						},
 					})
 				end,
+
 				["tailwindcss"] = function()
 					lspconfig.tailwindcss.setup({
 						capabilities = capabilities,

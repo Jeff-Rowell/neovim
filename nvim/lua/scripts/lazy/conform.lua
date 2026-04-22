@@ -8,8 +8,6 @@ return {
 				"stylua",
 				"goimports",
 				"prettier",
-				"autopep8",
-				"isort",
 			}
 
 			local registry = require("mason-registry")
@@ -37,7 +35,6 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					go = { "goimports" },
-					python = { "isort", "autopep8" },
 					terraform = { "terraform_fmt" },
 					ansible = { "ansible-lint" },
 					rust = { "rustfmt" },
