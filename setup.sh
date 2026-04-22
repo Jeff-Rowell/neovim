@@ -61,6 +61,8 @@ nvm install 24
 # Install rust for htmx lsp
 ##########################################################################################################################
 curl https://sh.rustup.rs -sSf | sh -s -- -y
+. "$HOME/.cargo/env"
+cargo install tree-sitter-cli
 
 ##########################################################################################################################
 # Install and configure tmux sessionizer
